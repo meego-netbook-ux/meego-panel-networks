@@ -1,0 +1,31 @@
+AC_PREREQ(2.53)
+AC_INIT(moblin-connection, 0.0.1)
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+AM_CONFIG_HEADER(config.h)
+
+AC_CANONICAL_HOST
+
+AC_PROG_CC
+AC_PROG_CC_STDC
+AC_PROG_INSTALL
+AC_PROG_LIBTOOL
+AC_ISC_POSIX
+AC_HEADER_STDC
+AM_PROG_CC_C_O
+
+PKG_CHECK_MODULES(GTK, gtk+-2.0)
+PKG_CHECK_MODULES(DBUS, dbus-glib-1 >= 0.73)
+
+DBUS_BINDING_TOOL="dbus-binding-tool"
+AC_SUBST(DBUS_BINDING_TOOL)
+
+GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`
+AC_SUBST(GLIB_GENMARSHAL)
+
+AC_OUTPUT([
+        Makefile
+        mux/Makefile
+        connman-common/Makefile
+        src/Makefile
+        data/Makefile
+])

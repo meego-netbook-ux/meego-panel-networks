@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(carrick, 0.0.0)
+AC_INIT(carrick, 0.0.1)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AM_CONFIG_HEADER(config.h)
 
@@ -28,4 +28,5 @@ AC_OUTPUT([
         connman-common/Makefile
         src/Makefile
         data/Makefile
+        data/icons/Makefile
 ])

@@ -1,1 +1,1 @@
-SUBDIRS = mux connman-common src data
+SUBDIRS = mux carrick src data

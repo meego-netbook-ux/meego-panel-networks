@@ -16,13 +16,14 @@ AM_PROG_CC_C_O
 PKG_CHECK_MODULES(GTK, gtk+-2.0)
 PKG_CHECK_MODULES(DBUS, dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(GCONNMAN, gconnman)
+PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 
 AC_OUTPUT([
         Makefile
         mux/Makefile
-	carrick/Makefile
+        carrick/Makefile
         src/Makefile
-	tests/Makefile
+        tests/Makefile
         data/Makefile
         data/icons/Makefile
 ])

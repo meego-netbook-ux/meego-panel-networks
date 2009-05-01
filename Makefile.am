@@ -1,4 +1,4 @@
-SUBDIRS = mux carrick src data tests
+SUBDIRS = mux carrick src data tests po
 
 -include $(top_srcdir)/git.mk
 
@@ -11,4 +11,7 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/depcomp \
 	$(srcdir)/install-sh \
 	$(srcdir)/ltmain.sh \
-	$(srcdir)/missing
+	$(srcdir)/missing \
+	$(srcdir)/mkinstalldirs \
+	$(srcdir)/omf.make \
+	$(srcdir)/xmldocs.make

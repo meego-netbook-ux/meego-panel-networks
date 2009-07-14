@@ -1,6 +1,7 @@
 AC_PREREQ(2.53)
 AC_INIT(carrick, 0.0.12)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+AC_CONFIG_MACRO_DIR([build/autotools])
 AM_CONFIG_HEADER(config.h)
 
 AC_CANONICAL_HOST
@@ -29,8 +30,14 @@ PKG_CHECK_MODULES(GCONNMAN, gconnman >= 0.1.16)
 PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.0 >= 0.7.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 
+SHAVE_INIT([build/autotools], [enable])
+
 AC_OUTPUT([
         Makefile
+        build/Makefile
+        build/autotools/Makefile
+        build/autotools/shave
+        build/autotools/shave-libtool
         carrick/Makefile
         src/Makefile
         tests/Makefile

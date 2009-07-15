@@ -1,4 +1,6 @@
-SUBDIRS = carrick src data tests po
+SUBDIRS = carrick src data tests po build
+
+ACLOCAL_AMFLAGS = -I build/autotools
 
 -include $(top_srcdir)/git.mk
 
@@ -14,4 +16,5 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/missing \
 	$(srcdir)/mkinstalldirs \
 	$(srcdir)/omf.make \
-	$(srcdir)/xmldocs.make
+	$(srcdir)/xmldocs.make \
+	`find "$(srcdir)" -type f -name Makefile.in -print`

@@ -17,4 +17,5 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/mkinstalldirs \
 	$(srcdir)/omf.make \
 	$(srcdir)/xmldocs.make \
+	$(srcdir)/build/autotools/*.m4 \
 	`find "$(srcdir)" -type f -name Makefile.in -print`

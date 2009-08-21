@@ -43,5 +43,6 @@ AC_OUTPUT([
         tests/Makefile
         data/Makefile
         data/icons/Makefile
+        data/theme/Makefile
         po/Makefile.in
 ])

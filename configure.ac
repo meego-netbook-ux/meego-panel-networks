@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(carrick, 1.0.0)
+AC_INIT(carrick, 1.1.0)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AC_CONFIG_MACRO_DIR([build/autotools])
 AM_CONFIG_HEADER(config.h)
@@ -24,11 +24,11 @@ AC_ISC_POSIX
 AC_HEADER_STDC
 AM_PROG_CC_C_O
 
-PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.16)
-PKG_CHECK_MODULES(DBUS, dbus-glib-1 >= 0.73)
-PKG_CHECK_MODULES(GCONNMAN, gconnman >= 0.5.0)
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
+PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.0 >= 0.7.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
+PKG_CHECK_MODULES(MPL, moblin-panel)
 
 SHAVE_INIT([build/autotools], [enable])
 
@@ -43,5 +43,6 @@ AC_OUTPUT([
         tests/Makefile
         data/Makefile
         data/icons/Makefile
+        data/theme/Makefile
         po/Makefile.in
 ])

@@ -30,14 +30,10 @@ PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.0 >= 0.7.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(MPL, moblin-panel)
 
-SHAVE_INIT([build/autotools], [enable])
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_OUTPUT([
         Makefile
-        build/Makefile
-        build/autotools/Makefile
-        build/autotools/shave
-        build/autotools/shave-libtool
         carrick/Makefile
         src/Makefile
         tests/Makefile

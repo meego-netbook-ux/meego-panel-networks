@@ -1,6 +1,4 @@
-SUBDIRS = carrick src data tests po build
-
-ACLOCAL_AMFLAGS = -I build/autotools
+SUBDIRS = carrick src data tests po
 
 -include $(top_srcdir)/git.mk
 

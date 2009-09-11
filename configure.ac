@@ -25,7 +25,7 @@ AM_PROG_CC_C_O
 
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
-PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.0 >= 0.7.0)
+PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.2)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(MPL, moblin-panel)
 

@@ -1,4 +1,4 @@
-SUBDIRS = carrick src data tests po
+SUBDIRS = carrick src data tests callouts po
 
 -include $(top_srcdir)/git.mk
 

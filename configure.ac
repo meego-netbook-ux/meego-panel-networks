@@ -39,5 +39,7 @@ AC_OUTPUT([
         data/Makefile
         data/icons/Makefile
         data/theme/Makefile
+        callouts/Makefile
+        callouts/3g/Makefile
         po/Makefile.in
 ])

@@ -28,6 +28,14 @@ PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.2)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(MPL, moblin-panel)
+PKG_CHECK_MODULES(REST, rest)
+
+AC_MSG_CHECKING([for mobile-broadband-provider-info])
+PKG_CHECK_EXISTS(mobile-broadband-provider-info,
+        _PKG_CONFIG(MOBILE_DATA, [variable=database], [mobile-broadband-provider-info])
+        AC_DEFINE_UNQUOTED(MOBILE_DATA, "$pkg_cv_MOBILE_DATA", [Mobile provider database])
+        AC_MSG_RESULT([yes]),
+        AC_MSG_ERROR([Cannot find mobile-broadband-provider-info]))
 
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 

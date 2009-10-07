@@ -12,7 +12,9 @@ AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package name])
 AM_GLIB_GNU_GETTEXT
 
-locaeldir='${prefix}/${DATADIRNAME}/locale'
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
+localedir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(localedir)
 
 AC_PROG_CC
@@ -43,8 +45,6 @@ PKG_CHECK_EXISTS(iso-codes,
         AC_DEFINE_UNQUOTED(ISOCODES_PREFIX, "$pkg_cv_ISOCODES", [iso-codes prefix])
         AC_MSG_RESULT([yes]),
         AC_MSG_ERROR([Cannot find iso-codes]))
-
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_OUTPUT([
         Makefile

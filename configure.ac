@@ -37,6 +37,13 @@ PKG_CHECK_EXISTS(mobile-broadband-provider-info,
         AC_MSG_RESULT([yes]),
         AC_MSG_ERROR([Cannot find mobile-broadband-provider-info]))
 
+AC_MSG_CHECKING([for iso-codes])
+PKG_CHECK_EXISTS(iso-codes,
+        _PKG_CONFIG(ISOCODES, [variable=prefix], [iso-codes])
+        AC_DEFINE_UNQUOTED(ISOCODES_PREFIX, "$pkg_cv_ISOCODES", [iso-codes prefix])
+        AC_MSG_RESULT([yes]),
+        AC_MSG_ERROR([Cannot find iso-codes]))
+
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_OUTPUT([

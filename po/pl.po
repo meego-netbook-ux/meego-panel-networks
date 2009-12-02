@@ -18,17 +18,6 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#. * Translator note: The disabled technologies available to be turned on is
-#. put together at
-#. * runtime.
-#. * The conjunction 'or' will be at the end of a choice of disabled
-#. technologies,
-#. * for example 'WiFi, WiMAX or 3G.
-#. 
-#: ../carrick/carrick-list.c:859
-msgid " or "
-msgstr "lub"
-
 #. * Translator note: the comma ',' will be used to join the different
 #. disabled technologies
 #. * as in the above example; 'WiFi, WiMAX or 3G'
@@ -141,21 +130,6 @@ msgstr "Niestety Twoje połączenie z %s zostało przerwane więc połączyliśm
 #, c-format
 msgid "Sorry, your connection to %s was lost. So we've connected you to a %s network"
 msgstr "Niestety Twoje połączenie z %s zostało przerwane więc połączyliśmy Cię z siecią %s"
-
-#: ../carrick/carrick-notification-manager.c:243
-#, c-format
-msgid "Sorry, your %s connection was lost. So we've connected you to a wired network"
-msgstr "Niestety twoje połączenie %s zostało przerwane więc połączyliśmy Cię do sieci przewodowej"
-
-#: ../carrick/carrick-notification-manager.c:250
-#, c-format
-msgid "Sorry, your %s connection was lost. So we've connected you to %s, a %s network"
-msgstr "Niestety twoje połączenie %s zostało utracone więc połączyliśmy Cię z %s przez %s"
-
-#: ../carrick/carrick-notification-manager.c:259
-#, c-format
-msgid "Sorry, your %s connection was lost. So we've connected you to a %s network"
-msgstr "Niestety twoje połączenie %s zostało przerwane więc połączyliśmy się przez %s"
 
 #: ../carrick/carrick-pane.c:637
 msgid "New connection settings"
@@ -329,10 +303,6 @@ msgstr "Szyfrowana WPA2"
 msgid "networks - not connected"
 msgstr "sieci - niepołączone"
 
-#: ../src/carrick.c:70
-msgid "networks - connecting"
-msgstr "sieci - połączone"
-
 #: ../src/carrick.c:76
 msgid "networks - wired"
 msgstr "sieci - przewodowe"
@@ -455,6 +425,36 @@ msgstr "Twoje hasło jest zbyt długie. Połączenie WPA2 wymaga mniej niż 63 z
 #, c-format
 msgid "Your password is too long. For a WPA  connection it needs to have fewer than 63 characters, you have %i"
 msgstr "Twoje hasło jest zbyt długie. Dla połączeń WPA musi mieć mniej niż 63 znaki, a masz %i."
+
+#: ../src/carrick.c:70
+msgid "networks - connecting"
+msgstr "sieci - łączenie"
+
+#. * Translator note: The disabled technologies available to be turned on is
+#. put together at
+#. * runtime.
+#. * The conjunction 'or' will be at the end of a choice of disabled
+#. technologies,
+#. * for example 'WiFi, WiMAX or 3G.
+#. 
+#: ../carrick/carrick-list.c:859
+msgid " or "
+msgstr " lub "
+
+#: ../carrick/carrick-notification-manager.c:243
+#, c-format
+msgid "Sorry, your %s connection was lost. So we've connected you to a wired network"
+msgstr "Niestety Twoje połączenie %s zostało przerwane więc połączyliśmy Cię do sieci przewodowej"
+
+#: ../carrick/carrick-notification-manager.c:250
+#, c-format
+msgid "Sorry, your %s connection was lost. So we've connected you to %s, a %s network"
+msgstr "Niestety Twoje połączenie %s zostało utracone więc połączyliśmy Cię z %s przez %s"
+
+#: ../carrick/carrick-notification-manager.c:259
+#, c-format
+msgid "Sorry, your %s connection was lost. So we've connected you to a %s network"
+msgstr "Niestety Twoje połączenie %s zostało przerwane więc połączyliśmy się przez %s"
 
 #~ msgid "Tertairy DNS:"
 #~ msgstr "Drugi zapasowy DNS:"

@@ -31,6 +31,7 @@
 
 #include "carrick-icon-factory.h"
 #include "carrick-notification-manager.h"
+#include "carrick-shell.h"
 
 #if ! HAVE_DECL_GTK_INFO_BAR_NEW
 #include "gtkinfobar.h"
@@ -554,8 +555,7 @@ _delete_button_cb (GtkButton *delete_button,
   /*
    * Now explicitely focus the panel (MB#7304)
    */
-  if (panel_client)
-    mpl_panel_client_request_focus (panel_client);
+  carrick_shell_request_focus ();
 
   gtk_widget_destroy (dialog);
 }

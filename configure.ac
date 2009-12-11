@@ -32,6 +32,11 @@ PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(MPL, moblin-panel >= 0.49.0)
 PKG_CHECK_MODULES(REST, rest-0.6)
 
+AC_MSG_CHECKING([for panel install location])
+PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
+AC_MSG_RESULT([$PANEL_DIR])
+AC_SUBST(PANEL_DIR)
+
 AC_MSG_CHECKING([for mobile-broadband-provider-info])
 PKG_CHECK_EXISTS(mobile-broadband-provider-info,
         _PKG_CONFIG(MOBILE_DATA, [variable=database], [mobile-broadband-provider-info])

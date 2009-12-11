@@ -125,7 +125,7 @@ void
 carrick_shell_hide (void)
 {
   if (panel_client)
-    mpl_panel_client_hide (panel_client);
+    mpl_panel_client_request_hide (panel_client);
 }
 
 static void

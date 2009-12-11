@@ -39,6 +39,11 @@ PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
 AC_MSG_RESULT([$PANEL_DIR])
 AC_SUBST(PANEL_DIR)
 
+AC_MSG_CHECKING([for panel theme location])
+THEME_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_theme_dir)
+AC_MSG_RESULT([$THEME_DIR])
+AC_SUBST(THEME_DIR)
+
 AC_MSG_CHECKING([for mobile-broadband-provider-info])
 PKG_CHECK_EXISTS(mobile-broadband-provider-info,
         _PKG_CONFIG(MOBILE_DATA, [variable=database], [mobile-broadband-provider-info])
@@ -65,6 +70,7 @@ AC_OUTPUT([
         src/Makefile
         tests/Makefile
         data/Makefile
+        data/carrick.desktop.in
         data/icons/Makefile
         data/theme/Makefile
         callouts/Makefile

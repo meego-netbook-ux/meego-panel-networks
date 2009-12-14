@@ -150,7 +150,7 @@ carrick_shell_close_dialog_on_hide (GtkDialog *dialog)
   if (!panel_client)
     return;
 
-  signal_id = g_signal_connect (panel_client, "hide", G_CALLBACK (panel_hide_cb), dialog);
+  signal_id = g_signal_connect (panel_client, "hide-begin", G_CALLBACK (panel_hide_cb), dialog);
   g_object_weak_ref (G_OBJECT (dialog), dialog_destroy_cb, GINT_TO_POINTER (signal_id));
 }
 

@@ -30,6 +30,7 @@ libcarrick_la_SOURCES = carrick-applet.c \
 												carrick-network-model.c \
 												carrick-network-model.h \
 												$(BUILT_SOURCES) \
+			carrick-shell.h \
                         $(NULL)
 
 if ! HAVE_INFOBAR

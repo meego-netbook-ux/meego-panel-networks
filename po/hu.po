@@ -144,18 +144,6 @@ msgstr "Kapcsolat nélküli mód"
 msgid "This will disable all your connections"
 msgstr "Ez minden hálózatod leállítja"
 
-#: ../carrick/carrick-service-item.c:50
-msgid "Internal Error: Invalid network service"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:51
-msgid "Critical Error: Unable to access Connection Manager"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:52
-msgid "ERROR: No 3G Hardware detected"
-msgstr ""
-
 #. TRANSLATORS: this is a wireless security method, at least WEP,
 #. *  WPA and WPA2 are possible token values. Example: "WEP encrypted".
 #. 
@@ -180,10 +168,6 @@ msgstr "Mégsem"
 #: ../carrick/carrick-service-item.c:292
 msgid "Configuring"
 msgstr "Beállítás"
-
-#: ../carrick/carrick-service-item.c:301
-msgid "Associating"
-msgstr ""
 
 #: ../carrick/carrick-service-item.c:310 ../carrick/carrick-service-item.c:335
 #: ../carrick/carrick-service-item.c:1290
@@ -222,35 +206,6 @@ msgstr ""
 "elfelejtését jelenti, és többé nem tudsz automatikusan\n"
 "kapcsolódni ehhez: %s."
 
-#: ../carrick/carrick-service-item.c:686
-#, c-format
-msgid "Your password isn't the right length. For a WEP connection it needs to be either 10 or 26 characters, you have %i."
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:696
-#, c-format
-msgid "Your password is too short. For a WPA  connection it needs to be at least 8 characters long, you have %i"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:700
-#, c-format
-msgid "Your password is too long. For a WPA  connection it needs to have fewer than 63 characters, you have %i"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:708
-#, c-format
-msgid "Your password is too short. For a WPA2  connection it needs to be at least 8 characters long, you have %i"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:712
-#, c-format
-msgid "Your password is too long. For a WPA2  connection it needs to have fewer than 63 characters, you have %i"
-msgstr ""
-
-#: ../carrick/carrick-service-item.c:1226
-msgid "Scanning"
-msgstr ""
-
 #. Note: security_sample should contain the longest possible security method
 #. TRANSLATORS: This is an example of a wireless security method
 #. (see another translator comment), used to estimate the string length.
@@ -259,121 +214,17 @@ msgstr ""
 msgid "WPA2 encrypted"
 msgstr "WPA2 titkosítás"
 
-#: ../src/carrick.c:64
-msgid "networks - not connected"
-msgstr "Hálózat - nincs kapcsolat"
-
-#: ../src/carrick.c:70
-msgid "networks - connecting"
-msgstr "Hálózat - kapcsolódás"
-
-#: ../src/carrick.c:76
-msgid "networks - wired"
-msgstr ""
-
-#: ../src/carrick.c:78
-#, c-format
-msgid "networks - %s - wifi"
-msgstr ""
-
-#: ../src/carrick.c:81
-#, c-format
-msgid "networks - %s - wimax"
-msgstr ""
-
-#: ../src/carrick.c:84
-#, c-format
-msgid "networks - %s - 3G"
-msgstr ""
-
-#: ../src/carrick.c:87
-#, c-format
-msgid "networks - %s - bluetooth"
-msgstr ""
-
-#: ../src/carrick.c:90 ../src/carrick.c:102
-msgid "networks"
-msgstr "hálózatok"
-
-#: ../src/carrick.c:97
-msgid "networks - error"
-msgstr ""
-
-#: ../src/carrick.c:129
-msgid "Run in standalone mode"
-msgstr ""
-
-#: ../src/carrick.c:140
-msgid "Carrick connectivity applet"
-msgstr ""
-
-#: ../src/carrick.c:141
-msgid "- Moblin connectivity applet"
-msgstr ""
-
 #: ../src/carrick.c:164
 msgid "network"
 msgstr "hálózat"
-
-#: ../callouts/3g/ggg-country-dialog.c:73
-#: ../callouts/3g/ggg-manual-dialog.c:70 ../callouts/3g/ggg-plan-dialog.c:111
-#: ../callouts/3g/ggg-provider-dialog.c:106
-#: ../callouts/3g/ggg-service-dialog.c:106
-msgid "Cellular Data Connection Wizard"
-msgstr ""
-
-#: ../callouts/3g/ggg-country-dialog.c:93
-msgid "Select Country"
-msgstr ""
 
 #: ../callouts/3g/ggg-manual-dialog.c:89
 msgid "Manual Configuration"
 msgstr "Kézi beállítás"
 
-#: ../callouts/3g/ggg-manual-dialog.c:93
-msgid "Plan Name (required):"
-msgstr ""
-
-#: ../callouts/3g/ggg-manual-dialog.c:96
-msgid "Username:"
-msgstr ""
-
 #: ../callouts/3g/ggg-manual-dialog.c:99
 msgid "Password:"
 msgstr "Jelszó:"
-
-#: ../callouts/3g/ggg-manual-dialog.c:103
-msgid "Gateway:"
-msgstr ""
-
-#: ../callouts/3g/ggg-manual-dialog.c:106
-msgid "Primary DNS:"
-msgstr ""
-
-#: ../callouts/3g/ggg-manual-dialog.c:109
-msgid "Secondary DNS:"
-msgstr ""
-
-#: ../callouts/3g/ggg-manual-dialog.c:112
-msgid "Tertiary DNS:"
-msgstr ""
-
-#: ../callouts/3g/ggg-plan-dialog.c:131
-msgid "Select your 3G Plan"
-msgstr ""
-
-#: ../callouts/3g/ggg-provider-dialog.c:126
-msgid "Select Provider"
-msgstr ""
-
-#: ../callouts/3g/ggg-service-dialog.c:59
-#, c-format
-msgid "%s (Roaming)"
-msgstr ""
-
-#: ../callouts/3g/ggg-service-dialog.c:125
-msgid "Select 3G Service"
-msgstr ""
 
 #: ../carrick/carrick-service-item.c:49
 msgid "Missing required APN (service plan name)"
@@ -454,6 +305,155 @@ msgstr "Elnézést, megszakadt a kapcsolat a(z) %s porton. Csatlakoztam a(z) %s 
 #: ../carrick/carrick-service-item.c:48
 msgid "Critical Error: Invalid country code"
 msgstr "Kritikus hiba: érvénytelen országkód"
+
+#: ../carrick/carrick-service-item.c:696
+#, c-format
+msgid "Your password is too short. For a WPA  connection it needs to be at least 8 characters long, you have %i"
+msgstr "A jelszavad túl rövid. A WPA kapcsolathoz legalább 8 karakter hosszú jelszó szükséges. A tied %i hosszú"
+
+#: ../callouts/3g/ggg-manual-dialog.c:93
+msgid "Plan Name (required):"
+msgstr "Terület neve (szükséges):"
+
+#: ../src/carrick.c:140
+msgid "Carrick connectivity applet"
+msgstr "Carrick csatlakozó alkalmazás"
+
+#: ../callouts/3g/ggg-manual-dialog.c:106
+msgid "Primary DNS:"
+msgstr "Elsődleges DNS:"
+
+#: ../callouts/3g/ggg-plan-dialog.c:131
+msgid "Select your 3G Plan"
+msgstr "Válaszd ki a 3G területedet"
+
+#: ../callouts/3g/ggg-manual-dialog.c:109
+msgid "Secondary DNS:"
+msgstr "Másodlagos DNS:"
+
+#: ../src/carrick.c:90 ../src/carrick.c:102
+msgid "networks"
+msgstr "hálózatok"
+
+#: ../src/carrick.c:87
+#, c-format
+msgid "networks - %s - bluetooth"
+msgstr "hálózatok - %s - bluetooth"
+
+#: ../src/carrick.c:78
+#, c-format
+msgid "networks - %s - wifi"
+msgstr "hálózatok - %s - wifi"
+
+#: ../src/carrick.c:76
+msgid "networks - wired"
+msgstr "hálózatok - vezetékes"
+
+#: ../src/carrick.c:84
+#, c-format
+msgid "networks - %s - 3G"
+msgstr "hálózatok - %s - 3G"
+
+#: ../src/carrick.c:81
+#, c-format
+msgid "networks - %s - wimax"
+msgstr "hálózatok - %s - wimax"
+
+#: ../src/carrick.c:129
+msgid "Run in standalone mode"
+msgstr "Futtatás általános módban"
+
+#: ../callouts/3g/ggg-country-dialog.c:73
+#: ../callouts/3g/ggg-manual-dialog.c:70 ../callouts/3g/ggg-plan-dialog.c:111
+#: ../callouts/3g/ggg-provider-dialog.c:106
+#: ../callouts/3g/ggg-service-dialog.c:106
+msgid "Cellular Data Connection Wizard"
+msgstr "3G Csatlakozás Varázsló"
+
+#: ../callouts/3g/ggg-country-dialog.c:93
+msgid "Select Country"
+msgstr "Ország kiválasztása"
+
+#: ../src/carrick.c:97
+msgid "networks - error"
+msgstr "hálózatok - hiba"
+
+#: ../callouts/3g/ggg-manual-dialog.c:103
+msgid "Gateway:"
+msgstr "Átjáró:"
+
+#: ../callouts/3g/ggg-manual-dialog.c:96
+msgid "Username:"
+msgstr "Felhasználónév:"
+
+#: ../src/carrick.c:141
+msgid "- Moblin connectivity applet"
+msgstr "- Moblin csatlakozó alkalmazás"
+
+#: ../carrick/carrick-service-item.c:1226
+msgid "Scanning"
+msgstr "Keresés"
+
+#: ../carrick/carrick-service-item.c:708
+#, c-format
+msgid "Your password is too short. For a WPA2  connection it needs to be at least 8 characters long, you have %i"
+msgstr "A jelszavad túl rövid. A WPA2 kapcsolathoz legalább 8 karakter hosszú jelszó szükséges. A tied %i hosszú"
+
+#: ../carrick/carrick-service-item.c:712
+#, c-format
+msgid "Your password is too long. For a WPA2  connection it needs to have fewer than 63 characters, you have %i"
+msgstr "A jelszavad túl hosszú. A WPA2 kapcsolathoz maximum 63 karakter hosszú jelszó szükséges. A tied %i hosszú"
+
+#: ../carrick/carrick-service-item.c:700
+#, c-format
+msgid "Your password is too long. For a WPA  connection it needs to have fewer than 63 characters, you have %i"
+msgstr "A jelszavad túl hosszú. A WPA kapcsolathoz maximum 63 karakter hosszú jelszó szükséges. A tied %i hosszú"
+
+#: ../carrick/carrick-service-item.c:686
+#, c-format
+msgid "Your password isn't the right length. For a WEP connection it needs to be either 10 or 26 characters, you have %i."
+msgstr "A jelszavad hossza nem megfelelő. A WEP kapcsolathoz 10 vagy 26 karakter hosszú jelszó szükséges. A tied %i hosszú."
+
+#: ../src/carrick.c:64
+msgid "networks - not connected"
+msgstr "hálózatok - nincs kapcsolat"
+
+#: ../src/carrick.c:70
+msgid "networks - connecting"
+msgstr "hálózatok - kapcsolódás"
+
+#: ../callouts/3g/ggg-service-dialog.c:125
+msgid "Select 3G Service"
+msgstr "3G szolgáltatás kiválasztása"
+
+#: ../callouts/3g/ggg-service-dialog.c:59
+#, c-format
+msgid "%s (Roaming)"
+msgstr "%s (Roaming)"
+
+#: ../callouts/3g/ggg-provider-dialog.c:126
+msgid "Select Provider"
+msgstr "Szolgáltató kiválasztása"
+
+#: ../carrick/carrick-service-item.c:50
+msgid "Internal Error: Invalid network service"
+msgstr "Belső hiba: érvénytelen hálózati szolgáltatás"
+
+#: ../carrick/carrick-service-item.c:51
+msgid "Critical Error: Unable to access Connection Manager"
+msgstr "Kritikus hiba: nem lehet csatlakozni a Hálózatkezelőhöz"
+
+#: ../carrick/carrick-service-item.c:52
+msgid "ERROR: No 3G Hardware detected"
+msgstr "HIBA: nem találok 3G-s hardvert"
+
+#: ../callouts/3g/ggg-manual-dialog.c:112
+msgid "Tertiary DNS:"
+msgstr "Harmadlagos DNS:"
+
+#: ../carrick/carrick-service-item.c:301
+msgid "Associating"
+msgstr "Társítás"
 
 #~ msgid "Sorry, we can't find any networks. "
 #~ msgstr "Elnézést, de nem találunk hálózatot."

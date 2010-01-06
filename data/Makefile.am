@@ -10,6 +10,6 @@ CLEANFILES = $(panel_DATA)
 
 install-data-hook:
 	mkdir --parents $(DESTDIR)$(sysconfdir)/xdg/autostart
-	ln -s $(DESTDIR)$(paneldir)/$(panel_DATA) $(DESTDIR)$(sysconfdir)/xdg/autostart
+	ln -s $(paneldir)/$(panel_DATA) $(DESTDIR)$(sysconfdir)/xdg/autostart
 
 -include $(top_srcdir)/git.mk

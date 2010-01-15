@@ -25,24 +25,34 @@ AC_ISC_POSIX
 AC_HEADER_STDC
 AM_PROG_CC_C_O
 
+AS_AC_EXPAND(LIBEXECDIR, $libexecdir)
+
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.2)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
-PKG_CHECK_MODULES(MPL, moblin-panel >= 0.49.0)
 PKG_CHECK_MODULES(REST, rest-0.6)
 
-AS_AC_EXPAND(LIBEXECDIR, $libexecdir)
+AC_MSG_CHECKING([whether to use the Moblin environment])
+AC_ARG_WITH([moblin],[AS_HELP_STRING([--without-moblin], [disable support for Moblin environment])],
+            [], [with_moblin=yes])
+AS_IF(
+[test "$with_moblin" = yes],
+[
+        AC_MSG_RESULT([yes])
+        AC_DEFINE([WITH_MOBLIN], 1, [Use Moblin])
 
-AC_MSG_CHECKING([for panel install location])
-PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
-AC_MSG_RESULT([$PANEL_DIR])
-AC_SUBST(PANEL_DIR)
+        PKG_CHECK_MODULES(MPL, moblin-panel >= 0.49.0)
 
-AC_MSG_CHECKING([for panel theme location])
-THEME_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_theme_dir)
-AC_MSG_RESULT([$THEME_DIR])
-AC_SUBST(THEME_DIR)
+        PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
+        AC_SUBST(PANEL_DIR)
+
+        THEME_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_theme_dir)
+        AC_SUBST(THEME_DIR)
+],
+AC_MSG_RESULT([no])
+)
+
 
 AC_MSG_CHECKING([for mobile-broadband-provider-info])
 PKG_CHECK_EXISTS(mobile-broadband-provider-info,

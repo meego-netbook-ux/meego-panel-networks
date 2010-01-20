@@ -52,6 +52,7 @@ AS_IF(
 ],
 AC_MSG_RESULT([no])
 )
+AM_CONDITIONAL([WITH_MOBLIN], [test "$with_moblin" = "yes"])
 
 
 AC_MSG_CHECKING([for mobile-broadband-provider-info])

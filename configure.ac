@@ -33,7 +33,7 @@ AC_DEFINE_UNQUOTED([THEME_DIR], "$THEME_DIR", [Carrick theme directory])
 
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
-PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.2)
+PKG_CHECK_MODULES(MX, mx-gtk-1.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(REST, rest-0.6)
 

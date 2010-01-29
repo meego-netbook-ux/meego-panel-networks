@@ -46,9 +46,6 @@ AS_IF(
 
         PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
         AC_SUBST(PANEL_DIR)
-
-        THEME_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_theme_dir)
-        AC_SUBST(THEME_DIR)
 ],
 AC_MSG_RESULT([no])
 )

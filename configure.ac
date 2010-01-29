@@ -27,6 +27,10 @@ AM_PROG_CC_C_O
 
 AS_AC_EXPAND(LIBEXECDIR, $libexecdir)
 
+THEME_DIR="${datadir}/${PACKAGE}/theme"
+AS_AC_EXPAND(THEME_DIR, $THEME_DIR)
+AC_DEFINE_UNQUOTED([THEME_DIR], "$THEME_DIR", [Carrick theme directory])
+
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(NBTK, nbtk-gtk-1.2)

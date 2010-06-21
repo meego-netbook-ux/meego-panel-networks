@@ -44,7 +44,7 @@ AS_IF(
 [test "$with_meego" = yes],
 [
         AC_MSG_RESULT([yes])
-        AC_DEFINE([WITH_MOBLIN], 1, [Use MeeGo])
+        AC_DEFINE([WITH_MEEGO], 1, [Use MeeGo])
 
         PKG_CHECK_MODULES(MPL, meego-panel >= 0.49.0)
 
@@ -53,7 +53,7 @@ AS_IF(
 ],
 AC_MSG_RESULT([no])
 )
-AM_CONDITIONAL([WITH_MOBLIN], [test "$with_meego" = "yes"])
+AM_CONDITIONAL([WITH_MEEGO], [test "$with_meego" = "yes"])
 
 
 AC_MSG_CHECKING([for mobile-broadband-provider-info])

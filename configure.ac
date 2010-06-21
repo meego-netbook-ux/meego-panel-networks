@@ -37,23 +37,23 @@ PKG_CHECK_MODULES(MX, mx-gtk-1.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(REST, rest-0.6)
 
-AC_MSG_CHECKING([whether to use the Moblin environment])
-AC_ARG_WITH([moblin],[AS_HELP_STRING([--without-moblin], [disable support for Moblin environment])],
-            [], [with_moblin=yes])
+AC_MSG_CHECKING([whether to use the MeeGo environment])
+AC_ARG_WITH([meego],[AS_HELP_STRING([--without-meego], [disable support for MeeGo environment])],
+            [], [with_meego=yes])
 AS_IF(
-[test "$with_moblin" = yes],
+[test "$with_meego" = yes],
 [
         AC_MSG_RESULT([yes])
-        AC_DEFINE([WITH_MOBLIN], 1, [Use Moblin])
+        AC_DEFINE([WITH_MOBLIN], 1, [Use MeeGo])
 
-        PKG_CHECK_MODULES(MPL, moblin-panel >= 0.49.0)
+        PKG_CHECK_MODULES(MPL, meego-panel >= 0.49.0)
 
-        PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
+        PANEL_DIR=$($PKG_CONFIG meego-panel --variable=meego_panel_panels_dir)
         AC_SUBST(PANEL_DIR)
 ],
 AC_MSG_RESULT([no])
 )
-AM_CONDITIONAL([WITH_MOBLIN], [test "$with_moblin" = "yes"])
+AM_CONDITIONAL([WITH_MOBLIN], [test "$with_meego" = "yes"])
 
 
 AC_MSG_CHECKING([for mobile-broadband-provider-info])

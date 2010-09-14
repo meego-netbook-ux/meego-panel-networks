@@ -263,8 +263,9 @@ msgid "Connected"
 msgstr "Kapcsolatban"
 
 #: ../carrick/carrick-service-item.c:360
+#, fuzzy
 msgid "Online"
-msgstr ""
+msgstr "(van erre egyantalan magyar szo?:)"
 
 #: ../carrick/carrick-service-item.c:367 ../carrick/carrick-service-item.c:376
 #, c-format
@@ -344,26 +345,28 @@ msgstr "A jelszavad túl hosszú. A WPA2 kapcsolathoz maximum 63 karakter hossz�
 #: ../carrick/carrick-service-item.c:1296
 #, fuzzy
 msgid "Sorry, it looks like the IP address is not valid"
-msgstr "Elnézést, az IP cím nem tűnik megfelelőnek"
+msgstr "Elnézést, úgy tűnik az IP cím nem érvényes"
 
 #: ../carrick/carrick-service-item.c:1308
+#, fuzzy
 msgid "Sorry, it looks like the gateway address is not valid"
-msgstr ""
+msgstr "Elnézést, úgy tűnik a hálálózati átjáró nem érvényes"
 
 #: ../carrick/carrick-service-item.c:1320
 #, fuzzy
 msgid "Sorry, it looks like the subnet mask is not valid"
-msgstr "Elnézést, az alhálózati maszk nem tűnik megfelelőnek"
+msgstr "Elnézést, úgy tűnik az alhálózati maszk nem érvényes"
 
 #: ../carrick/carrick-service-item.c:1365
-#, c-format
+#, c-format, fuzzy
 msgid "Sorry, it looks like the nameserver address '%s' is not valid"
-msgstr ""
+msgstr "Elnézést, úgy tűnik a névszerver címe '%s' nem érvényes"
 
 #. TRANSLATORS: label for the Advanced expander in a service item
 #: ../carrick/carrick-service-item.c:1727
+#, fuzzy
 msgid "Advanced"
-msgstr ""
+msgstr "Előrehaladott"
 
 #: ../carrick/carrick-service-item.c:1737
 msgid "Scanning"

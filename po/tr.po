@@ -398,7 +398,6 @@ msgid "DNS:"
 msgstr "DNS:"
 
 #: ../carrick/carrick-service-item.c:1879
-#, fuzzy
 msgid "DHCP"
 msgstr "DHCP"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-11 22:55+0000\n"
+"POT-Creation-Date: 2010-08-27 22:39+0000\n"
 "PO-Revision-Date: 2010-01-31 21:02+0200\n"
 "Last-Translator: U. Sertac BIRCAN  <usbircan@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,22 +38,23 @@ msgstr ", "
 msgid "wired"
 msgstr "kablolulu"
 
-#: ../carrick/carrick-list.c:854 ../carrick/carrick-pane.c:1464
+#. Switches
+#: ../carrick/carrick-list.c:854 ../carrick/carrick-pane.c:1429
 #: ../carrick/carrick-util.c:32
 msgid "WiFi"
 msgstr "WiFi"
 
-#: ../carrick/carrick-list.c:855 ../carrick/carrick-pane.c:1558
+#: ../carrick/carrick-list.c:855 ../carrick/carrick-pane.c:1471
 #: ../carrick/carrick-util.c:38
 msgid "WiMAX"
 msgstr "WiMAX"
 
-#: ../carrick/carrick-list.c:856 ../carrick/carrick-pane.c:1527
+#: ../carrick/carrick-list.c:856 ../carrick/carrick-pane.c:1457
 #: ../carrick/carrick-util.c:36
 msgid "3G"
 msgstr "3G"
 
-#: ../carrick/carrick-list.c:857 ../carrick/carrick-pane.c:1590
+#: ../carrick/carrick-list.c:857 ../carrick/carrick-pane.c:1485
 #: ../carrick/carrick-util.c:40
 msgid "Bluetooth"
 msgstr "Bluetooth"
@@ -158,11 +159,11 @@ msgstr "Üzgünüz %s bağlantınız kayboldu. Bu yüzden sizi %s'e, bir %s ağ�
 msgid "Sorry, your %s connection was lost. So we've connected you to a %s network"
 msgstr "Üzgünüz %s bağlantınız kayboldu. Bu yüzden sizi %s ağına bağladık"
 
-#: ../carrick/carrick-pane.c:627
+#: ../carrick/carrick-pane.c:634
 msgid "New connection settings"
 msgstr "Yeni bağlantı ayarları"
 
-#: ../carrick/carrick-pane.c:665
+#: ../carrick/carrick-pane.c:672
 msgid ""
 "Enter the name of the network you want\n"
 "to connect to and, where necessary, the\n"
@@ -172,127 +173,135 @@ msgstr ""
 "ismini, gerekli olan yerler içinse\n"
 "şifreyi ve güvenlik kipini girin."
 
-#: ../carrick/carrick-pane.c:675
+#: ../carrick/carrick-pane.c:682
 msgid "Network name"
 msgstr "Ağ adı"
 
-#: ../carrick/carrick-pane.c:687
+#: ../carrick/carrick-pane.c:694
 msgid "Network security"
 msgstr "Ağ güvenliği"
 
-#: ../carrick/carrick-pane.c:697
+#: ../carrick/carrick-pane.c:704
 msgid "None"
 msgstr "Hiçbiri"
 
-#: ../carrick/carrick-pane.c:711
+#: ../carrick/carrick-pane.c:716
 msgid "Password"
 msgstr "Şifre"
 
-#: ../carrick/carrick-pane.c:726 ../carrick/carrick-service-item.c:1283
+#: ../carrick/carrick-pane.c:731 ../carrick/carrick-service-item.c:1816
 msgid "Show password"
 msgstr "Şifreyi göster"
 
-#: ../carrick/carrick-pane.c:1399
+#: ../carrick/carrick-pane.c:1412
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: ../carrick/carrick-pane.c:1443 ../carrick/carrick-service-item.c:328
+msgid "Wired"
+msgstr "Kablolu"
+
+#: ../carrick/carrick-pane.c:1510
+msgid "Offline mode"
+msgstr "Çevrimdışı modu"
+
+#: ../carrick/carrick-pane.c:1520
+msgid "This will disable all your connections"
+msgstr "Bu tüm bağlantılarınızı etkisizleştirecek"
+
+#: ../carrick/carrick-pane.c:1556 ../src/carrick.c:351
 msgid "Networks"
 msgstr "Ağlar"
 
 #. New connection button
-#: ../carrick/carrick-pane.c:1423
+#: ../carrick/carrick-pane.c:1562
 msgid "Add new connection"
 msgstr "Yeni bağlantı ekle"
-
-#: ../carrick/carrick-pane.c:1496 ../carrick/carrick-service-item.c:239
-msgid "Wired"
-msgstr "Kablolu"
-
-#: ../carrick/carrick-pane.c:1634
-msgid "Offline mode"
-msgstr "Çevrimdışı modu"
-
-#: ../carrick/carrick-pane.c:1659
-msgid "This will disable all your connections"
-msgstr "Bu tüm bağlantılarınızı etkisizleştirecek"
 
 #. Translators:
 #. The following are potential errors that a user might see while
 #. attempting to configure a 3G data service.
 #. 
-#: ../carrick/carrick-service-item.c:45
+#: ../carrick/carrick-service-item.c:51
 msgid "Critical Error: Invalid country code"
 msgstr "Kritik hata: Geçersiz ülke kodu"
 
-#: ../carrick/carrick-service-item.c:46
+#: ../carrick/carrick-service-item.c:52
 msgid "Missing required APN (service plan name)"
 msgstr "Gerekli APN (servis plan ismi) eksik"
 
-#: ../carrick/carrick-service-item.c:47
+#: ../carrick/carrick-service-item.c:53
 msgid "Internal Error: Invalid network service"
 msgstr "Dahili hata: Geçersiz ağ servisi"
 
-#: ../carrick/carrick-service-item.c:48
+#: ../carrick/carrick-service-item.c:54
 msgid "Critical Error: Unable to access Connection Manager"
 msgstr "Kritik hata: Bağlantı yöneticisine bağlanamıyor"
 
-#: ../carrick/carrick-service-item.c:49
+#: ../carrick/carrick-service-item.c:55
 msgid "ERROR: No 3G Hardware detected"
 msgstr "HATA: 3G donanımı bulunamadı"
 
 #. TRANSLATORS: this is a wireless security method, at least WEP,
-#. *  WPA and WPA2 are possible token values. Example: "WEP encrypted".
+#. *  WPA and IEEE8021X are possible token values. Example: "WEP encrypted".
 #. 
-#: ../carrick/carrick-service-item.c:175
+#: ../carrick/carrick-service-item.c:192
 #, c-format
 msgid "%s encrypted"
 msgstr "%s şifrelenmiş"
 
-#: ../carrick/carrick-service-item.c:270
+#: ../carrick/carrick-service-item.c:340 ../carrick/carrick-service-item.c:357
 msgid "Disconnect"
 msgstr "Bağlantıyı kes"
 
-#: ../carrick/carrick-service-item.c:273
+#: ../carrick/carrick-service-item.c:343
 msgid "Connected"
 msgstr "Bağlandı"
 
-#: ../carrick/carrick-service-item.c:280 ../carrick/carrick-service-item.c:289
+#: ../carrick/carrick-service-item.c:360
+msgid "Online"
+msgstr "Çevrimiçi"
+
+#: ../carrick/carrick-service-item.c:367 ../carrick/carrick-service-item.c:376
 #, c-format
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../carrick/carrick-service-item.c:283
+#: ../carrick/carrick-service-item.c:370
 msgid "Configuring"
 msgstr "Ayarlanıyor"
 
-#: ../carrick/carrick-service-item.c:292
+#: ../carrick/carrick-service-item.c:379
 msgid "Associating"
 msgstr "İlişkilendiriliyor"
 
-#: ../carrick/carrick-service-item.c:301 ../carrick/carrick-service-item.c:326
-#: ../carrick/carrick-service-item.c:1272
+#: ../carrick/carrick-service-item.c:388 ../carrick/carrick-service-item.c:413
+#: ../carrick/carrick-service-item.c:1803
 msgid "Connect"
 msgstr "Bağlan"
 
-#: ../carrick/carrick-service-item.c:329
+#: ../carrick/carrick-service-item.c:416
 msgid "Connection failed"
 msgstr "Bağlantı başarısız"
 
-#: ../carrick/carrick-service-item.c:332
+#: ../carrick/carrick-service-item.c:419
 msgid "Sorry, the connection failed. You could try again."
 msgstr "Üzgünüz bağlantı başarısız. Yeniden deneyebilirsiniz."
 
-#: ../carrick/carrick-service-item.c:338 ../carrick/carrick-service-item.c:341
+#: ../carrick/carrick-service-item.c:425 ../carrick/carrick-service-item.c:428
 #, c-format
 msgid "Disconnecting"
 msgstr "Bağlantı kesiliyor"
 
-#: ../carrick/carrick-service-item.c:399
+#: ../carrick/carrick-service-item.c:494
 msgid "Type password here"
 msgstr "Şifreyi girin"
 
-#: ../carrick/carrick-service-item.c:462
+#: ../carrick/carrick-service-item.c:563
 msgid "Really remove?"
 msgstr "Kaldırılsın mı?"
 
-#: ../carrick/carrick-service-item.c:482
+#: ../carrick/carrick-service-item.c:583
 #, c-format
 msgid ""
 "Do you want to remove the %s %s network? This\n"
@@ -303,32 +312,54 @@ msgstr ""
 " şifrenizi de kaybettirecek ve %s'e  bir daha otomatik\n"
 " giriş yapamayacaksınız."
 
-#: ../carrick/carrick-service-item.c:666
+#: ../carrick/carrick-service-item.c:786
 #, c-format
 msgid "Your password isn't the right length. For a WEP connection it needs to be either 10 or 26 characters, you have %i."
 msgstr "Şifrenizin uzunluğu uygun değil. WEP bağlantısı için şifreniz 10 ya da 26 karakter olmalı, sizinki %i"
 
-#: ../carrick/carrick-service-item.c:677
+#: ../carrick/carrick-service-item.c:797
 #, c-format
 msgid "Your password is too short. For a WPA  connection it needs to be at least 8 characters long, you have %i"
 msgstr "Şifreniz çok kısa. WPA bağlantısı için şifreniz en az 8 karakter olmalı, sizinki %i"
 
-#: ../carrick/carrick-service-item.c:681
+#: ../carrick/carrick-service-item.c:801
 #, c-format
 msgid "Your password is too long. For a WPA  connection it needs to have fewer than 63 characters, you have %i"
 msgstr "Şifreniz çok uzun. WPA bağlantısı için şifreniz en fazla 63 karakter olmalı, sizinki %i"
 
-#: ../carrick/carrick-service-item.c:690
+#: ../carrick/carrick-service-item.c:810
 #, c-format
 msgid "Your password is too short. For a WPA2  connection it needs to be at least 8 characters long, you have %i"
 msgstr "Şifreniz çok kısa. WPA2 bağlantısı için şifreniz en az 8 karakter olmalı, sizinki %i"
 
-#: ../carrick/carrick-service-item.c:694
+#: ../carrick/carrick-service-item.c:814
 #, c-format
 msgid "Your password is too long. For a WPA2  connection it needs to have fewer than 63 characters, you have %i"
 msgstr "Şifreniz çok uzun. WPA2 bağlantısı için şifreniz en fazla 63 karakter olmalı, sizinki %i"
 
-#: ../carrick/carrick-service-item.c:1208
+#: ../carrick/carrick-service-item.c:1296
+msgid "Sorry, it looks like the IP address is not valid"
+msgstr "Üzgünüm, IP adresi geçersiz görünüyor"
+
+#: ../carrick/carrick-service-item.c:1308
+msgid "Sorry, it looks like the gateway address is not valid"
+msgstr "Üzgünüm, Ağ geçidi adresi geçersiz görünüyor"
+
+#: ../carrick/carrick-service-item.c:1320
+msgid "Sorry, it looks like the subnet mask is not valid"
+msgstr "Üzgünüm, Alt ağ maskesi geçersiz görünüyor"
+
+#: ../carrick/carrick-service-item.c:1365
+#, c-format
+msgid "Sorry, it looks like the nameserver address '%s' is not valid"
+msgstr "Üzgünüm, nameserver adresi '%s' geçersiz görünüyor"
+
+#. TRANSLATORS: label for the Advanced expander in a service item
+#: ../carrick/carrick-service-item.c:1727
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: ../carrick/carrick-service-item.c:1737
 msgid "Scanning"
 msgstr "Tarıyor"
 
@@ -336,9 +367,49 @@ msgstr "Tarıyor"
 #. TRANSLATORS: This is an example of a wireless security method
 #. (see another translator comment), used to estimate the string length.
 #. It should look like the ones below network name in the UI
-#: ../carrick/carrick-service-item.c:1227
+#: ../carrick/carrick-service-item.c:1758
 msgid "WPA2 encrypted"
 msgstr "WPA2 şifrelenmiş"
+
+#. TRANSLATORS: label in advanced settings (next to combobox
+#. * for DHCP/Static IP)
+#: ../carrick/carrick-service-item.c:1865
+msgid "Connect by:"
+msgstr "Bununla bağlan:"
+
+#. TRANSLATORS: label in advanced settings
+#: ../carrick/carrick-service-item.c:1867
+msgid "IP address:"
+msgstr "IP adresi:"
+
+#. TRANSLATORS: label in advanced settings
+#: ../carrick/carrick-service-item.c:1869
+msgid "Subnet mask:"
+msgstr "Alt ağ maskesi:"
+
+#. TRANSLATORS: label in advanced settings
+#: ../carrick/carrick-service-item.c:1871
+msgid "Router:"
+msgstr "Yönlendirici:"
+
+#. TRANSLATORS: label in advanced settings
+#: ../carrick/carrick-service-item.c:1873
+msgid "DNS:"
+msgstr "DNS:"
+
+#: ../carrick/carrick-service-item.c:1879
+#, fuzzy
+msgid "DHCP"
+msgstr "DHCP"
+
+#: ../carrick/carrick-service-item.c:1881
+msgid "Static IP"
+msgstr "Statik IP"
+
+#. TRANSLATORS: label for apply button in static ip settings
+#: ../carrick/carrick-service-item.c:1931
+msgid "Apply"
+msgstr "Uygula"
 
 #: ../src/carrick.c:43
 msgid "networks - not connected"
@@ -380,9 +451,13 @@ msgstr "ağlar"
 msgid "networks - error"
 msgstr "ağlar - hata"
 
-#: ../src/carrick.c:281
+#: ../src/carrick.c:279
 msgid "Run in standalone mode"
 msgstr "Tek başına bağımsız çalış"
+
+#: ../src/carrick.c:281
+msgid "Embed in another window (overrides --standalone)"
+msgstr "Başka pencereye göm (--standalone u geçersiz kılar)"
 
 #: ../src/carrick.c:292
 msgid "Carrick connectivity applet"
@@ -392,7 +467,7 @@ msgstr "Carrick bağlantı uygulaması"
 msgid "- Moblin connectivity applet"
 msgstr "- Moblin bağlantı uygulaması"
 
-#: ../src/carrick.c:328 ../data/carrick.desktop.in.in.h:2
+#: ../src/carrick.c:334 ../data/carrick.desktop.in.in.h:2
 msgid "network"
 msgstr "ağ"
 

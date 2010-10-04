@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(meego-panel-networks, 1.2.14)
+AC_INIT(meego-panel-networks, 1.2.15)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AM_CONFIG_HEADER(config.h)
 

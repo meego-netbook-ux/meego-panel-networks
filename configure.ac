@@ -1,5 +1,5 @@
 AC_PREREQ(2.53)
-AC_INIT(meego-panel-networks, 1.2.15)
+AC_INIT(carrick, 1.2.15)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 AM_CONFIG_HEADER(config.h)
 
@@ -7,7 +7,7 @@ AC_CANONICAL_HOST
 
 IT_PROG_INTLTOOL([0.35.0])
 
-GETTEXT_PACKAGE=meego-panel-networks
+GETTEXT_PACKAGE=carrick
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [The gettext package name])
 AS_ALL_LINGUAS
@@ -36,7 +36,7 @@ PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(MX, mx-gtk-1.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
-PKG_CHECK_MODULES(REST, rest-0.7)
+PKG_CHECK_MODULES(REST, rest-0.6)
 PKG_CHECK_MODULES(GCONF, gconf-2.0)
 
 AC_MSG_CHECKING([whether to use the MeeGo environment])
@@ -48,9 +48,9 @@ AS_IF(
         AC_MSG_RESULT([yes])
         AC_DEFINE([WITH_MEEGO], 1, [Use MeeGo])
 
-        PKG_CHECK_MODULES(MPL, meego-panel >= 0.49.0)
+        PKG_CHECK_MODULES(MPL, moblin-panel >= 0.49.0)
 
-        PANEL_DIR=$($PKG_CONFIG meego-panel --variable=meego_panel_panels_dir)
+        PANEL_DIR=$($PKG_CONFIG moblin-panel --variable=moblin_panel_panels_dir)
         AC_SUBST(PANEL_DIR)
 ],
 AC_MSG_RESULT([no])

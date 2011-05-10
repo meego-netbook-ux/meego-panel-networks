@@ -35,9 +35,16 @@ AC_DEFINE_UNQUOTED([THEME_DIR], "$THEME_DIR", [Carrick theme directory])
 PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.12)
 PKG_CHECK_MODULES(DBUS, gthread-2.0 dbus-glib-1 >= 0.73)
 PKG_CHECK_MODULES(MX, mx-gtk-1.0)
-PKG_CHECK_MODULES(LIBNOTIFY, libnotify)
 PKG_CHECK_MODULES(REST, rest-0.7)
 PKG_CHECK_MODULES(GCONF, gconf-2.0)
+
+PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= 0.7,
+                  have_notify_0_7="yes",
+                  [PKG_CHECK_MODULES(LIBNOTIFY, libnotify)])
+if test $have_notify_0_7 = "yes"; then
+       AC_DEFINE(HAVE_NOTIFY_0_7, 1, [we have libnotify 0.7 or better])
+fi
+
 
 AC_MSG_CHECKING([whether to use the MeeGo environment])
 AC_ARG_WITH([meego],[AS_HELP_STRING([--without-meego], [disable support for MeeGo environment])],

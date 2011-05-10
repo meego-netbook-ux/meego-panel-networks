@@ -57,6 +57,19 @@ AC_MSG_RESULT([no])
 )
 AM_CONDITIONAL([WITH_MEEGO], [test "$with_meego" = "yes"])
 
+AC_MSG_CHECKING([whether to enable openconnect support])
+AC_ARG_WITH([openconnect],[AS_HELP_STRING([--without-openconnect], [disable support for OpenConnect VPN])],
+            [], [with_openconnect=yes])
+AS_IF(
+[test "$with_openconnect" = yes],
+[
+        AC_MSG_RESULT([yes])
+        AC_DEFINE([WITH_OPENCONNECT], 1, [Use OpenConnect])
+        PKG_CHECK_MODULES(OPENCONNECT, openconnect)
+],
+AC_MSG_RESULT([no])
+)
+AM_CONDITIONAL([WITH_OPENCONNECT], [test "$with_openconnect" = "yes"])
 
 AC_MSG_CHECKING([for mobile-broadband-provider-info])
 PKG_CHECK_EXISTS(mobile-broadband-provider-info,
@@ -83,5 +96,6 @@ AC_OUTPUT([
         data/theme/Makefile
         callouts/Makefile
         callouts/3g/Makefile
+        callouts/openconnect/Makefile
         po/Makefile.in
 ])

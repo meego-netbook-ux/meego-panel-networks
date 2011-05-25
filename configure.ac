@@ -41,7 +41,7 @@ PKG_CHECK_MODULES(GCONF, gconf-2.0)
 PKG_CHECK_MODULES(LIBNOTIFY, libnotify >= 0.7,
                   have_notify_0_7="yes",
                   [PKG_CHECK_MODULES(LIBNOTIFY, libnotify)])
-if test $have_notify_0_7 = "yes"; then
+if test "$have_notify_0_7" = "yes"; then
        AC_DEFINE(HAVE_NOTIFY_0_7, 1, [we have libnotify 0.7 or better])
 fi
 

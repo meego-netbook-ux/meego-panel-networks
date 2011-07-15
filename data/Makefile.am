@@ -7,10 +7,10 @@ desktop_data = $(desktop_in_files:.desktop.in.in=.desktop)
 if WITH_MEEGO
 paneldir = @PANEL_DIR@
 panel_DATA = $(desktop_data)
-endif
 
 autostartdir = $(sysconfdir)/xdg/autostart
 autostart_DATA = $(desktop_data)
+endif
 
 EXTRA_DIST = $(panel_in_files)
 CLEANFILES = $(panel_DATA)

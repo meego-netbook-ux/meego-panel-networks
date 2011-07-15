@@ -24,6 +24,9 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+
+#include <gtk/gtkx.h>
+
 #include <dbus/dbus-glib.h>
 
 #include "carrick/carrick-applet.h"
@@ -274,7 +277,7 @@ void _activate_cb (GObject *object, gpointer user_data)
     }
   else
     {
-      popup_window (window, GDK_CURRENT_TIME);
+      popup_window (GTK_WINDOW (window), GDK_CURRENT_TIME);
       dialog_visible = TRUE;
     }
 }
@@ -302,7 +305,7 @@ main (int    argc,
   CarrickApplet *applet;
   GtkWidget     *pane;
   gboolean       standalone = FALSE;
-  GdkNativeWindow windowid = 0;
+  Window         windowid = 0;
   GError        *error = NULL;
   GOptionEntry   entries[] = {
     { "standalone", 's', 0, G_OPTION_ARG_NONE, &standalone,
@@ -397,7 +400,7 @@ main (int    argc,
 
     gtk_widget_show_all (box);
 #else
-    window = GTK_WINDOW (gtk_window_new (GTK_WINDOW_TOPLEVEL));
+    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
     gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
     gtk_window_set_deletable (GTK_WINDOW (window), FALSE);
     gtk_window_set_keep_above (GTK_WINDOW (window), TRUE);

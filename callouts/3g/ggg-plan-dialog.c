@@ -145,7 +145,8 @@ ggg_plan_dialog_init (GggPlanDialog *self)
   gtk_widget_show (priv->combo);
   gtk_table_attach_defaults (GTK_TABLE (table), priv->combo, 1, 3, 1, 2);
 
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (self)->vbox), table);
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (self))),
+                     table);
 }
 
 RestXmlNode *

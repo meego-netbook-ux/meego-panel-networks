@@ -84,7 +84,9 @@ ggg_manual_dialog_init (GggManualDialog *self)
                 "border-width", 6,
                 NULL);
   gtk_widget_show (table);
-  gtk_container_add (GTK_CONTAINER (GTK_DIALOG (self)->vbox), table);
+
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (self))),
+                                    table);
 
   label = gtk_label_new (_("Manual Configuration"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);

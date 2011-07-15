@@ -22,42 +22,27 @@
 #include <gtk/gtk.h>
 #include "mux-banner.h"
 
+/*
+ * TODO: surely this can be a GtkInfobar?
+ */
+
 struct _MuxBannerPrivate {
-  GdkColor colour;
   GtkWidget *label;
 };
 
 #define GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), MUX_TYPE_BANNER, MuxBannerPrivate))
 G_DEFINE_TYPE (MuxBanner, mux_banner, GTK_TYPE_HBOX);
 
-static void
-mux_banner_realize (GtkWidget *widget)
-{
-  MuxBanner *banner = MUX_BANNER (widget);
-
-  GTK_WIDGET_CLASS (mux_banner_parent_class)->realize (widget);
-
-  gdk_color_parse ("#d7d9d6", &banner->priv->colour);
-  gdk_colormap_alloc_color (gtk_widget_get_colormap (widget),
-                            &banner->priv->colour,
-                            FALSE, TRUE);
-}
-
 static gboolean
-mux_banner_expose (GtkWidget *widget, GdkEventExpose *event)
+mux_banner_draw (GtkWidget *widget, cairo_t *cr)
 {
-  MuxBanner *banner = MUX_BANNER (widget);
-  GdkGC *gc;
+  cairo_rectangle (cr, 0, 0,
+	gtk_widget_get_allocated_width (widget),
+	gtk_widget_get_allocated_height (widget));
+  cairo_set_source_rgb (cr, 0.84, 0.85, 0.83);
+  cairo_fill (cr);
 
-  gc = gdk_gc_new (widget->window);
-  gdk_gc_set_foreground (gc, &banner->priv->colour);
-
-  gdk_draw_rectangle (widget->window, gc, TRUE,
-                      event->area.x, event->area.y,
-                      event->area.width, event->area.height);
-
-
-  return GTK_WIDGET_CLASS (mux_banner_parent_class)->expose_event (widget, event);
+  return FALSE;
 }
 
 static void
@@ -65,8 +50,7 @@ mux_banner_class_init (MuxBannerClass *klass)
 {
     GtkWidgetClass *w_class = (GtkWidgetClass *)klass;
 
-    w_class->realize = mux_banner_realize;
-    w_class->expose_event = mux_banner_expose;
+    w_class->draw = mux_banner_draw;
 
     g_type_class_add_private (klass, sizeof (MuxBannerPrivate));
 }

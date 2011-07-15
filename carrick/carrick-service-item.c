@@ -36,8 +36,6 @@
 #include <config.h>
 #include <arpa/inet.h>
 #include <glib/gi18n.h>
-#include <mx-gtk/mx-gtk.h>
-#include "nbtk-gtk-expander.h"
 
 #include "connman-service-bindings.h"
 
@@ -383,7 +381,7 @@ _set_form_state (CarrickServiceItem *self)
   if (g_strcmp0 (priv->method, "manual") == 0)
     {
       if (gtk_combo_box_get_active (combo) == METHOD_FIXED)
-        gtk_combo_box_remove_text (combo, METHOD_FIXED);
+        gtk_combo_box_text_remove (GTK_COMBO_BOX_TEXT (combo), METHOD_FIXED);
 
       gtk_combo_box_set_active (combo, METHOD_MANUAL);
       gtk_widget_set_sensitive (GTK_WIDGET (combo), TRUE);
@@ -391,7 +389,7 @@ _set_form_state (CarrickServiceItem *self)
   else if (g_strcmp0 (priv->method, "dhcp") == 0)
     {
       if (gtk_combo_box_get_active (combo) == METHOD_FIXED)
-        gtk_combo_box_remove_text (combo, METHOD_FIXED);
+        gtk_combo_box_text_remove (GTK_COMBO_BOX_TEXT (combo), METHOD_FIXED);
 
       gtk_combo_box_set_active (combo, METHOD_DHCP);
       gtk_widget_set_sensitive (GTK_WIDGET (combo), TRUE);
@@ -404,7 +402,8 @@ _set_form_state (CarrickServiceItem *self)
             * combobox just like "DHCP" and "Static IP". Fixed means
             * that the IP configuration cannot be changed at all,
             * like in a 3G network */
-          gtk_combo_box_insert_text (combo, METHOD_FIXED, _("Fixed IP"));
+          gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo),
+                                          METHOD_FIXED, _("Fixed IP"));
         }
       gtk_combo_box_set_active (combo, METHOD_FIXED);
       gtk_widget_set_sensitive (GTK_WIDGET (combo), FALSE);
@@ -705,6 +704,7 @@ _delete_button_cb (GtkButton *delete_button,
   GtkWidget                 *dialog;
   GtkWidget                 *label;
   gchar                     *label_text = NULL;
+  GtkBox                    *content_area;
 
   dialog = gtk_dialog_new_with_buttons (_ ("Really remove?"),
                                         GTK_WINDOW (gtk_widget_get_toplevel (user_data)),
@@ -718,8 +718,6 @@ _delete_button_cb (GtkButton *delete_button,
 
   carrick_shell_close_dialog_on_hide (GTK_DIALOG (dialog));
 
-  gtk_dialog_set_has_separator (GTK_DIALOG (dialog),
-                                FALSE);
   gtk_dialog_set_default_response (GTK_DIALOG (dialog),
                                    GTK_RESPONSE_ACCEPT);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
@@ -735,13 +733,11 @@ _delete_button_cb (GtkButton *delete_button,
                                 priv->name);
   label = gtk_label_new (label_text);
 
-  gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox),
-                       12);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox),
-                      label,
-                      TRUE,
-                      TRUE,
-                      6);
+  content_area = GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog)));
+
+  gtk_box_set_spacing (content_area, 12);
+  gtk_box_pack_start (content_area, label, TRUE, TRUE, 6);
+
   gtk_widget_show_all (dialog);
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
@@ -904,8 +900,8 @@ _advanced_expander_notify_expanded_cb (GObject    *object,
 
       gtk_widget_hide (priv->info_bar);
     }
-  nbtk_gtk_expander_set_expanded (NBTK_GTK_EXPANDER (priv->expando),
-                                  expanded);
+  gtk_expander_set_expanded (GTK_EXPANDER (priv->expando),
+                             expanded);
 }
 
 static void
@@ -1046,8 +1042,8 @@ _unexpand_advanced_settings (CarrickServiceItem *item)
                                      _advanced_expander_notify_expanded_cb,
                                      item);
 
-  nbtk_gtk_expander_set_expanded (NBTK_GTK_EXPANDER (priv->expando),
-                                  FALSE);
+  gtk_expander_set_expanded (GTK_EXPANDER (priv->expando),
+                             FALSE);
 }
 
 gboolean
@@ -1265,10 +1261,10 @@ carrick_service_item_enter_notify_event (GtkWidget        *widget,
   CarrickServiceItemPrivate *priv = item->priv;
 
   if (priv->favorite)
-    gdk_window_set_cursor (widget->window, priv->hand_cursor);
+    gdk_window_set_cursor (gtk_widget_get_window (widget), priv->hand_cursor);
   else
-    gdk_window_set_cursor (widget->window, NULL);
-  
+    gdk_window_set_cursor (gtk_widget_get_window (widget), NULL);
+
   return TRUE;
 }
 
@@ -1281,7 +1277,7 @@ carrick_service_item_leave_notify_event (GtkWidget        *widget,
   if (event->detail == GDK_NOTIFY_INFERIOR ||
       event->detail == GDK_NOTIFY_NONLINEAR_VIRTUAL)
     {
-      gdk_window_set_cursor (widget->window, NULL);
+      gdk_window_set_cursor (gtk_widget_get_window (widget), NULL);
     }
 
   return TRUE;
@@ -1613,13 +1609,6 @@ apply_button_clicked_cb (GtkButton *button,
   _unexpand_advanced_settings (item);
 }
 
-static void
-button_size_request_cb (GtkWidget      *button,
-                        GtkRequisition *requisition,
-                        gpointer        user_data)
-{
-  requisition->width = MAX (requisition->width, CARRICK_MIN_BUTTON_WIDTH);
-}
 
 static void
 carrick_service_item_class_init (CarrickServiceItemClass *klass)
@@ -1716,7 +1705,8 @@ add_entry_to_table (GtkTable *table, guint row)
 {
   GtkWidget *entry;
 
-  entry = gtk_entry_new_with_max_length (15);
+  entry = gtk_entry_new ();
+  gtk_entry_set_max_length (GTK_ENTRY (entry), 15);
   gtk_widget_show (entry);
   gtk_widget_set_size_request (entry, 100, -1);
   gtk_table_attach (table, entry,
@@ -1726,6 +1716,20 @@ add_entry_to_table (GtkTable *table, guint row)
 
   return entry;
 }
+
+static void
+set_button_size_request (GtkWidget *widget)
+{
+  GtkRequisition req;
+  gint req_width;
+
+  gtk_widget_get_preferred_size (widget, &req, NULL);
+
+  req_width = MAX (req.width, CARRICK_MIN_BUTTON_WIDTH);
+
+  gtk_widget_set_size_request (widget, req_width, req.height);
+}
+
 
 static void
 carrick_service_item_init (CarrickServiceItem *self)
@@ -1763,17 +1767,15 @@ carrick_service_item_init (CarrickServiceItem *self)
   priv->hand_cursor = gdk_cursor_new (GDK_HAND1);
 
   gtk_event_box_set_visible_window (GTK_EVENT_BOX (self), FALSE);
-  
+
   box = gtk_hbox_new (FALSE,
                       6);
   gtk_widget_show (box);
-  priv->expando = nbtk_gtk_expander_new ();
+  priv->expando = gtk_expander_new ("");
   gtk_container_add (GTK_CONTAINER (self),
                      priv->expando);
-  nbtk_gtk_expander_set_label_widget (NBTK_GTK_EXPANDER (priv->expando),
-                                      box);
-  nbtk_gtk_expander_set_has_indicator (NBTK_GTK_EXPANDER (priv->expando),
-                                       FALSE);
+  gtk_expander_set_label_widget (GTK_EXPANDER (priv->expando),
+                                 box);
   gtk_widget_show (priv->expando);
 
   priv->icon = gtk_image_new ();
@@ -1863,8 +1865,9 @@ carrick_service_item_init (CarrickServiceItem *self)
   /* TRANSLATORS: button for services that require an additional 
    * web login (clicking will open browser) */
   priv->portal_button = gtk_button_new_with_label (_("Log in"));
-  g_signal_connect_after (priv->portal_button, "size-request",
-                          G_CALLBACK (button_size_request_cb), self);
+
+  set_button_size_request (priv->portal_button);
+
   g_signal_connect (priv->portal_button, "clicked",
                     G_CALLBACK (_portal_button_cb), self);
   gtk_box_pack_start (GTK_BOX (priv->connect_box),
@@ -1873,8 +1876,9 @@ carrick_service_item_init (CarrickServiceItem *self)
 
   priv->connect_button = gtk_button_new_with_label (_("Scanning"));
   gtk_widget_show (priv->connect_button);
-  g_signal_connect_after (priv->connect_button, "size-request",
-                          G_CALLBACK (button_size_request_cb), self);
+
+  set_button_size_request (priv->connect_button);
+
   g_signal_connect (priv->connect_button,
                     "clicked",
                     G_CALLBACK (_connect_button_cb),
@@ -1939,8 +1943,9 @@ carrick_service_item_init (CarrickServiceItem *self)
 
   connect_with_pw_button = gtk_button_new_with_label (_ ("Connect"));
   gtk_widget_show (connect_with_pw_button);
-  g_signal_connect_after (connect_with_pw_button, "size-request",
-                          G_CALLBACK (button_size_request_cb), self);
+
+  set_button_size_request (connect_with_pw_button);
+
   g_signal_connect (connect_with_pw_button,
                     "clicked",
                     G_CALLBACK (_connect_with_pw_clicked_cb),
@@ -2009,14 +2014,14 @@ carrick_service_item_init (CarrickServiceItem *self)
   /* TRANSLATORS: label in advanced settings */
   add_label_to_table (GTK_TABLE (table), 4, _("DNS:"));
 
-  priv->method_combo = gtk_combo_box_new_text ();  
+  priv->method_combo = gtk_combo_box_new_with_entry ();
   /* NOTE: order/index of items in combobox is significant */
   /* TRANSLATORS: choices in the connection method combobox:
    * Will include "DHCP", "Static IP" and sometimes "Fixed IP" */
-  gtk_combo_box_insert_text (GTK_COMBO_BOX (priv->method_combo),
-                             METHOD_DHCP, _("DHCP"));
-  gtk_combo_box_insert_text (GTK_COMBO_BOX (priv->method_combo),
-                             METHOD_MANUAL, _("Static IP"));
+  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (priv->method_combo),
+                                  METHOD_DHCP, _("DHCP"));
+  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (priv->method_combo),
+                                  METHOD_MANUAL, _("Static IP"));
 
   gtk_widget_show (priv->method_combo);
   gtk_table_attach (GTK_TABLE (table), priv->method_combo,
@@ -2069,8 +2074,9 @@ carrick_service_item_init (CarrickServiceItem *self)
   /* TRANSLATORS: label for apply button in static ip settings */
   priv->apply_button = gtk_button_new_with_label (_("Apply"));
   gtk_widget_show (priv->apply_button);
-  g_signal_connect_after (priv->apply_button, "size-request",
-                          G_CALLBACK (button_size_request_cb), self);
+
+  set_button_size_request (priv->apply_button);
+
   g_signal_connect (priv->apply_button, "clicked",
                     G_CALLBACK (apply_button_clicked_cb), self);
   gtk_container_add (GTK_CONTAINER (align), priv->apply_button);

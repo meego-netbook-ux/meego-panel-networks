@@ -171,8 +171,9 @@ carrick_list_drag_begin (GtkWidget      *widget,
   /* remove widget from list and setup dnd popup window */
   priv->drag_window = gtk_window_new (GTK_WINDOW_POPUP);
   gtk_widget_set_size_request (priv->drag_window,
-                               widget->allocation.width,
-                               widget->allocation.height);
+                               gtk_widget_get_allocated_width (widget),
+                               gtk_widget_get_allocated_height (widget));
+
   gtk_widget_get_pointer (widget, &x, &y);
   gtk_widget_reparent (widget, priv->drag_window);
   gtk_drag_set_icon_widget (context,
@@ -312,10 +313,10 @@ _active_item_was_visible (CarrickList *list)
 {
   CarrickListPrivate *priv = list->priv;
 
-  if (priv->active_item_rel_pos + priv->active_item->allocation.height < 0)
+  if (priv->active_item_rel_pos + (gtk_widget_get_allocated_height (priv->active_item)) < 0)
     return FALSE;
 
-  if (priv->active_item_rel_pos > GTK_WIDGET (list)->allocation.height)
+  if (priv->active_item_rel_pos > (gtk_widget_get_allocated_width (GTK_WIDGET (list))))
     return FALSE;
 
   return TRUE;
@@ -343,7 +344,7 @@ active_item_alloc_cb (GtkWidget     *item,
       if (allocation->height > priv->active_item_height)
         {
           expand = allocation->height - priv->active_item_height;
-          space_below = GTK_WIDGET (list)->allocation.height - 
+          space_below = (gtk_widget_get_allocated_height (GTK_WIDGET (list))) - 
                         (priv->active_item_rel_pos + priv->active_item_height);
           move = MAX (0, expand - space_below);
         }
@@ -365,8 +366,13 @@ _adjustment_value_changed_cb (GtkAdjustment *adj, CarrickList *list)
   /* save the position of the active item relative to the adjustment.
    * This allows us to preserve that position in active_item_alloc_cb() */
   if (priv->active_item)
-    priv->active_item_rel_pos = priv->active_item->allocation.y -
+    {
+      GtkAllocation allocation;
+
+      gtk_widget_get_allocation (priv->active_item, &allocation);
+      priv->active_item_rel_pos = allocation.y -
                                 gtk_adjustment_get_value (adj);
+    }
 }
 
 /* called when a ServiceItem signals it is active or when
@@ -384,9 +390,12 @@ _set_active_item (CarrickList *list, GtkWidget *item)
   priv->active_item = item;
   if (priv->active_item)
     {
-      priv->active_item_rel_pos = priv->active_item->allocation.y -
+      GtkAllocation allocation;
+      gtk_widget_get_allocation (priv->active_item, &allocation);
+
+      priv->active_item_rel_pos = allocation.y -
                                   gtk_adjustment_get_value (priv->adjustment);
-      priv->active_item_height = priv->active_item->allocation.height;
+      priv->active_item_height = allocation.height;
       g_signal_connect (priv->active_item, "size-allocate",
                         G_CALLBACK (active_item_alloc_cb), list);
     }
@@ -747,7 +756,7 @@ _mngr_property_changed_cb (DBusGProxy  *manager,
 {
   list_update_property (property, value, list);
 
-  if (GTK_WIDGET_VISIBLE (list->priv->fallback))
+  if (gtk_widget_get_visible (list->priv->fallback))
       carrick_list_update_fallback (list);
 }
 
@@ -919,13 +928,13 @@ carrick_list_drag_motion (GtkWidget      *widget,
     }
   else if (gtk_adjustment_get_value (priv->adjustment) <
            gtk_adjustment_get_upper (priv->adjustment) &&
-           GTK_WIDGET (list)->allocation.height - list_y < FAST_SCROLL_BUFFER)
+           (gtk_widget_get_allocated_height (GTK_WIDGET (list))) - list_y < FAST_SCROLL_BUFFER)
     {
       new_speed = 12;
     }
   else if (gtk_adjustment_get_value (priv->adjustment) <
            gtk_adjustment_get_upper (priv->adjustment) &&
-           GTK_WIDGET (list)->allocation.height - list_y < SCROLL_BUFFER)
+           (gtk_widget_get_allocated_height (GTK_WIDGET (list))) - list_y < SCROLL_BUFFER)
     {
       new_speed = 5;
     }

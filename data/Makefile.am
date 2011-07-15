@@ -1,18 +1,22 @@
 SUBDIRS = icons theme
 
-desktop_in_files = carrick.desktop.in.in
-desktop_data = $(desktop_in_files:.desktop.in.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
 if WITH_MEEGO
 paneldir = @PANEL_DIR@
-panel_DATA = $(desktop_data)
+panel_DATA = carrick.desktop
 
 autostartdir = $(sysconfdir)/xdg/autostart
-autostart_DATA = $(desktop_data)
+autostart_DATA = carrick.desktop
+
+else
+
+desktopdir = $(datadir)/applications
+desktop_DATA = carrick-standalone.desktop
+
 endif
 
-EXTRA_DIST = $(panel_in_files)
-CLEANFILES = $(panel_DATA)
+EXTRA_DIST = carrick.desktop.in.in carrick-standalone.desktop.in.in
+CLEANFILES = carrick.desktop carrick-standalone.desktop
 
 -include $(top_srcdir)/git.mk

@@ -98,6 +98,7 @@ AC_OUTPUT([
         tests/Makefile
         data/Makefile
         data/carrick.desktop.in
+        data/carrick-standalone.desktop.in
         data/icons/Makefile
         data/theme/Makefile
         callouts/Makefile

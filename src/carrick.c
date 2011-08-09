@@ -322,8 +322,8 @@ main (int    argc,
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   textdomain (GETTEXT_PACKAGE);
 
-  g_set_application_name (_ ("Carrick connectivity applet"));
-  gtk_init_with_args (&argc, &argv, _ ("- MeeGo connectivity applet"),
+  g_set_application_name (_ ("Network Settings"));
+  gtk_init_with_args (&argc, &argv, _ ("- MeeGo network settings"),
                       entries, GETTEXT_PACKAGE, &error);
   dbus_g_thread_init ();
 

@@ -2014,7 +2014,7 @@ carrick_service_item_init (CarrickServiceItem *self)
   /* TRANSLATORS: label in advanced settings */
   add_label_to_table (GTK_TABLE (table), 4, _("DNS:"));
 
-  priv->method_combo = gtk_combo_box_new_with_entry ();
+  priv->method_combo = gtk_combo_box_text_new ();
   /* NOTE: order/index of items in combobox is significant */
   /* TRANSLATORS: choices in the connection method combobox:
    * Will include "DHCP", "Static IP" and sometimes "Fixed IP" */

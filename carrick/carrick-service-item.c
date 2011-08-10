@@ -88,7 +88,7 @@ struct _CarrickServiceItemPrivate
   GtkWidget *passphrase_entry;
   GtkWidget *show_password_check;
   GtkWidget *delete_button;
-  GtkWidget *expando;
+  GtkWidget *outer_box;
 
   GtkWidget *advanced_box;
   GtkWidget *method_combo;
@@ -900,8 +900,6 @@ _advanced_expander_notify_expanded_cb (GObject    *object,
 
       gtk_widget_hide (priv->info_bar);
     }
-  gtk_expander_set_expanded (GTK_EXPANDER (priv->expando),
-                             expanded);
 }
 
 static void
@@ -1042,8 +1040,6 @@ _unexpand_advanced_settings (CarrickServiceItem *item)
                                      _advanced_expander_notify_expanded_cb,
                                      item);
 
-  gtk_expander_set_expanded (GTK_EXPANDER (priv->expando),
-                             FALSE);
 }
 
 gboolean
@@ -1768,28 +1764,27 @@ carrick_service_item_init (CarrickServiceItem *self)
 
   gtk_event_box_set_visible_window (GTK_EVENT_BOX (self), FALSE);
 
-  box = gtk_hbox_new (FALSE,
-                      6);
-  gtk_widget_show (box);
-  priv->expando = gtk_expander_new ("");
+
+  priv->outer_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+
   gtk_container_add (GTK_CONTAINER (self),
-                     priv->expando);
-  gtk_expander_set_label_widget (GTK_EXPANDER (priv->expando),
-                                 box);
-  gtk_widget_show (priv->expando);
+                     priv->outer_box);
+
+  gtk_widget_show (priv->outer_box);
 
   priv->icon = gtk_image_new ();
   gtk_widget_show (priv->icon);
-  gtk_box_pack_start (GTK_BOX (box),
+  gtk_box_pack_start (GTK_BOX (priv->outer_box),
                       priv->icon,
                       FALSE,
                       FALSE,
                       6);
+  gtk_widget_set_valign (priv->icon, GTK_ALIGN_START);
 
   vbox = gtk_vbox_new (FALSE,
                        6);
   gtk_widget_show (vbox);
-  gtk_box_pack_start (GTK_BOX (box),
+  gtk_box_pack_start (GTK_BOX (priv->outer_box),
                       vbox,
                       TRUE,
                       TRUE,
@@ -1826,7 +1821,7 @@ carrick_service_item_init (CarrickServiceItem *self)
                          GTK_RELIEF_NONE);
   gtk_button_set_image (GTK_BUTTON (priv->delete_button),
                         image);
-  gtk_box_pack_end (GTK_BOX (box),
+  gtk_box_pack_end (GTK_BOX (priv->outer_box),
                     priv->delete_button,
                     FALSE,
                     FALSE,
@@ -1875,6 +1870,10 @@ carrick_service_item_init (CarrickServiceItem *self)
                       FALSE, FALSE, 6);
 
   priv->connect_button = gtk_button_new_with_label (_("Scanning"));
+
+  gtk_widget_set_vexpand (priv->connect_button, FALSE);
+  gtk_widget_set_hexpand (priv->connect_button, FALSE);
+
   gtk_widget_show (priv->connect_button);
 
   set_button_size_request (priv->connect_button);
@@ -1988,7 +1987,7 @@ carrick_service_item_init (CarrickServiceItem *self)
 
   priv->advanced_box = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (priv->advanced_box);
-  gtk_container_add (GTK_CONTAINER (priv->expando), priv->advanced_box);
+  gtk_container_add (GTK_CONTAINER (priv->advanced_expander), priv->advanced_box);
 
   align = gtk_alignment_new (0.0, 0.0, 0.0, 0.0);
   gtk_alignment_set_padding (GTK_ALIGNMENT (align), 6, 6, 20, 20);
@@ -2080,6 +2079,7 @@ carrick_service_item_init (CarrickServiceItem *self)
   g_signal_connect (priv->apply_button, "clicked",
                     G_CALLBACK (apply_button_clicked_cb), self);
   gtk_container_add (GTK_CONTAINER (align), priv->apply_button);
+
 }
 
 GtkWidget*
